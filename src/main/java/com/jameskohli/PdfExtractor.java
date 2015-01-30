@@ -35,5 +35,6 @@ public class PdfExtractor
         } catch (IOException e1) {
             LOGGER.error("Error printing " + file, e1);
         }
+        LOGGER.info("Successfully printed out " + file);
     }
 }

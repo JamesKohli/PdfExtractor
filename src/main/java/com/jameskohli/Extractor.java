@@ -17,7 +17,6 @@ import java.net.URL;
  */
 public class Extractor {
 
-  private final PDDocument pddoc;
   private static final Logger LOGGER = LoggerFactory.getLogger(Extractor.class);
   private final String text;
 
@@ -26,16 +25,12 @@ public class Extractor {
    * @param pdfPath The pdf resource to load into the extractor
    * @throws IOException
    */
-  public Extractor(URL pdfPath) throws IOException {
-    pddoc = PDDocument.load(pdfPath);
-    PDFTextStripper stripper = new PDFTextStripper();
-    text = stripper.getText(pddoc);
-  }
-
   public Extractor(String pdfPath) throws IOException {
-    pddoc = PDDocument.load(pdfPath);
+    LOGGER.info("stripping text from " + pdfPath);
+    PDDocument pddoc = PDDocument.load(pdfPath);
     PDFTextStripper stripper = new PDFTextStripper();
     text = stripper.getText(pddoc);
+    LOGGER.info("Finished stripping text from " + pdfPath);
   }
 
   /**
