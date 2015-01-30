@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  * Created by James on 1/30/2015.
@@ -25,8 +26,14 @@ public class Extractor {
    * @param pdfPath The pdf resource to load into the extractor
    * @throws IOException
    */
+  public Extractor(URL pdfPath) throws IOException {
+    pddoc = PDDocument.load(pdfPath);
+    PDFTextStripper stripper = new PDFTextStripper();
+    text = stripper.getText(pddoc);
+  }
+
   public Extractor(String pdfPath) throws IOException {
-    pddoc = PDDocument.load(getClass().getResource(pdfPath));
+    pddoc = PDDocument.load(pdfPath);
     PDFTextStripper stripper = new PDFTextStripper();
     text = stripper.getText(pddoc);
   }

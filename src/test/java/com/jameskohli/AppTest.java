@@ -43,7 +43,7 @@ public class AppTest
 
     public void testExtractor() {
         try {
-            Extractor e = new Extractor("/pdf-sample.pdf");
+            Extractor e = new Extractor(getClass().getResource("/pdf-sample.pdf"));
             assertNotNull(e.getText());
             LOGGER.info(e.getText());
         } catch (Exception e) {
