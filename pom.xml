@@ -3,7 +3,7 @@
 
   <groupId>com.jameskohli</groupId>
   <artifactId>PdfExtractor</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>PdfExtractor</name>
@@ -39,7 +39,7 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/JamesKohli/PdfExtractor.git</developerConnection>
-    <tag>PdfExtractor-1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
