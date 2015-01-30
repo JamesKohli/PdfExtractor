@@ -38,6 +38,10 @@
     </dependency>
   </dependencies>
 
+  <scm>
+    <developerConnection>scm:git:https://github.com/JamesKohli/PdfExtractor.git</developerConnection>
+  </scm>
+
   <build>
     <plugins>
       <plugin>
@@ -70,6 +74,11 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.1</version>
       </plugin>
     </plugins>
   </build>
