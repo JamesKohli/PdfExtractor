@@ -1,8 +1,9 @@
 # PdfExtractor
-Reads in pdfs and hopefully turns them into some kind of usable format
+This reads in pdfs and converts them into csv format, so they can be loaded into excel.
+As of version 1.0, usage is as follows:
 
-As of commit 4e4cdd6, usage is as follows:
+java -jar PdfExtractor-1.0.jar FileName.pdf
 
-java com.jameskohli.PdfExtractor pdf1.pdf pdf2.pdf etc
+The output file will be saved to the same location with a .csv extension.
 
-This will print the pdf to the console.
+It also does some preliminary parsing to get it into a usable table format. At the moment, it just deletes blank lines and replaces strings of . characters with commas, as that's how the initial target pdfs appeared. I'm happy to add more parsing options if it would be helpful.
