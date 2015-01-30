@@ -3,6 +3,8 @@ package com.jameskohli;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -12,6 +14,7 @@ import java.io.IOException;
 public class AppTest 
     extends TestCase
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppTest.class);
     /**
      * Create the test case
      *
@@ -40,11 +43,11 @@ public class AppTest
 
     public void testExtractor() {
         try {
-            Extractor e = new Extractor("/2014q3_vol1.pdf");
+            Extractor e = new Extractor("/pdf-sample.pdf");
             assertNotNull(e.getText());
-        } catch (Exception e1) {
-            e1.printStackTrace();
+            LOGGER.info(e.getText());
+        } catch (Exception e) {
+            LOGGER.error("Error running Extractor test", e);
         }
-
     }
 }

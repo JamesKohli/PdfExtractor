@@ -18,19 +18,24 @@ public class Extractor {
 
   private final PDDocument pddoc;
   private static final Logger LOGGER = LoggerFactory.getLogger(Extractor.class);
+  private final String text;
 
+  /**
+   * Create a new extractor for a pdf
+   * @param pdfPath The pdf resource to load into the extractor
+   * @throws IOException
+   */
   public Extractor(String pdfPath) throws IOException {
     pddoc = PDDocument.load(getClass().getResource(pdfPath));
+    PDFTextStripper stripper = new PDFTextStripper();
+    text = stripper.getText(pddoc);
   }
 
+  /**
+   * Return the text of the pdf
+   * @return get the pdf text
+   */
   public String getText() {
-    String text = null;
-    try {
-      PDFTextStripper stripper = new PDFTextStripper();
-      text = stripper.getText(pddoc);
-    } catch (IOException e) {
-      LOGGER.error("Could not get text from document", e);
-    }
     return text;
   }
 }
