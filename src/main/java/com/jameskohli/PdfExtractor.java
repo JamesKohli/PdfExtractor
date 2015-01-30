@@ -17,19 +17,23 @@ public class PdfExtractor
     public static void main( String[] args )
     {
         LOGGER.info("Starting PDF Extractor");
-        if (args.length == 0) {
-            LOGGER.error("Please run with a pdf file path parameter. eg: java -jar PdfExtractor.java sample-pdf.pdf");
+        if (args.length != 1) {
+            LOGGER.error("Please run with the following format: java -jar PdfExtractor Input.pdf");
             throw new IllegalArgumentException();
         }
 
-        for (String arg : args) {
-            LOGGER.info("Printing out pdf " + arg);
-            try {
-                Extractor e = new Extractor(arg);
-                LOGGER.info(e.getText());
-            } catch (IOException e1) {
-                LOGGER.error("Error printing " + arg, e1);
-            }
+        write(args[0], args[0].replace("pdf", "csv"));
+    }
+
+    private static void write(String file, String outputFile) {
+        LOGGER.info("Printing out pdf " + file);
+        try {
+            Extractor e = new Extractor(file);
+            TextParser tp = new TextParser(e.getText());
+            LOGGER.trace(tp.getText());
+            tp.write(outputFile);
+        } catch (IOException e1) {
+            LOGGER.error("Error printing " + file, e1);
         }
     }
 }

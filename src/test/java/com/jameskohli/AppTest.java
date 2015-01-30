@@ -50,4 +50,10 @@ public class AppTest
             LOGGER.error("Error running Extractor test", e);
         }
     }
+
+    public void testTextParserRead() {
+
+        TextParser tp = new TextParser("Kohli..........James");
+        assertEquals("Kohli,James", tp.getText());
+    }
 }
